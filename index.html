@@ -1,16 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./script.js"></script>
-    <title>Document</title>
+    <link rel=stylesheet type=text/css href=Css.css>
+    <title>Panel de Usuario</title>
 </head>
 
 <body>
 
+    <div id="login">
+        <form id="login">
+            <div id="formulario">
+                <h1>Iniciar Sesión</h1><br>
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" name="usuario" maxlength="20" placeholder="Usuario" required /><br><br>
+
+                <label for="contrasenia">Contraseña:</label>
+                <input type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña" required /><br><br>
+
+                <button type="submit">Entrar</button><br><br>
+                <a href="registro.html" id="registrarse">Registrarse</a><br><br>
+            </div>
+        </form>
+    </div>
+
+    <div id="register">
+        <form id="register">
+            <div id="formulario">
+                <h1>Registro</h1><br>
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" name="usuario" maxlength="20" placeholder="Usuario" required /><br><br>
+
+                <label for="contrasenia">Contraseña:</label>
+                <input type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña" required /><br><br>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="password" id="telefono" name="telefono" placeholder="Teléfono" required /><br><br>
+
+                <label for="cp">Código Postal:</label>
+                <input type="password" id="cp" name="cp" placeholder="Código Postal" required /><br><br>
+
+                <input type="checkbox" id="mayorEdad" name="mayorEdad" value="sí">
+                <label for="mayorEdad">Soy mayor de edad</label><br><br>
+
+                <button type="submit">Crear Cuenta</button><br><br>
+                <a href="registro.html" id="registrarse">¿Ya tienes cuenta? Inicia Sesión</a><br><br>
+            </div>
+        </form>
+    </div>
+
+    <div id="usuario">
+        <form id="register">
+            <div id="formulario">
+                <h1>Bienvenido, usuario</h1>
+                <button type="submit">Cambiar Tema</button> <button type="submit">Cerrar Sesión</button><br><br>
+            </div>
+        </form>
+    </div>
+    
 </body>
 
 </html>
