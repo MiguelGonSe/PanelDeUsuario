@@ -5,63 +5,86 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./script.js"></script>
-    <link rel=stylesheet type=text/css href=Css.css>
+    <link rel="stylesheet" type="text/css" href="Css.css">
     <title>Panel de Usuario</title>
 </head>
 
 <body>
 
-    <div id="login">
-        <form id="login">
-            <div id="formulario">
+    <div id="login" class="scene active">
+
+        <form id="form_login">
+            <div class="formulario">
+
                 <h1>Iniciar Sesión</h1><br>
-                <label for="usuario">Usuario:</label>
-                <input type="text" id="usuario" name="usuario" maxlength="20" placeholder="Usuario" required /><br><br>
+                <label for="usuarioLogin">Usuario:</label>
+                <input type="text" id="usuarioLogin" name="usuario" maxlength="20" placeholder="Usuario"
+                    required><br><br>
 
-                <label for="contrasenia">Contraseña:</label>
-                <input type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña" required /><br><br>
+                <label for="contraseniaLogin">Contraseña:</label>
+                <input type="password" id="contraseniaLogin" name="contrasenia" placeholder="Contraseña"
+                    required><br><br>
 
-                <button type="submit">Entrar</button><br><br>
-                <a href="registro.html" id="registrarse">Registrarse</a><br><br>
+                <button id="registrarse">Registrarse</button>
+                <button type="submit">Entrar</button><br>
+                <p id="errorLogin"></p>
             </div>
         </form>
+
     </div>
 
-    <div id="register">
-        <form id="register">
-            <div id="formulario">
-                <h1>Registro</h1><br>
-                <label for="usuario">Usuario:</label>
-                <input type="text" id="usuario" name="usuario" maxlength="20" placeholder="Usuario" required /><br><br>
 
-                <label for="contrasenia">Contraseña:</label>
-                <input type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña" required /><br><br>
+    <div id="registro" class="scene">
+
+        <form id="form_registro">
+            <div class="formulario">
+
+                <h1>Registro</h1><br>
+                <label for="usuarioRegistro">Usuario:</label>
+                <input type="text" id="usuarioRegistro" name="usuario" maxlength="20" placeholder="Usuario"
+                    required><br><br>
+
+                <label for="contraseniaRegistro">Contraseña:</label>
+                <input type="password" id="contraseniaRegistro" name="contrasenia" placeholder="Contraseña"
+                    required><br><br>
 
                 <label for="telefono">Teléfono:</label>
-                <input type="password" id="telefono" name="telefono" placeholder="Teléfono" required /><br><br>
+                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required><br><br>
 
                 <label for="cp">Código Postal:</label>
-                <input type="password" id="cp" name="cp" placeholder="Código Postal" required /><br><br>
+                <input type="text" id="cp" name="cp" placeholder="Código Postal" required><br><br>
 
                 <input type="checkbox" id="mayorEdad" name="mayorEdad" value="sí">
                 <label for="mayorEdad">Soy mayor de edad</label><br><br>
+                <div id="edadContainer" style="display:none;">
+                    <label for="edad">Edad:</label>
+                    <input type="number" id="edad" name="edad" placeholder="Edad" min="18" max="99"><br><br>
+                </div>
 
-                <button type="submit">Crear Cuenta</button><br><br>
-                <a href="registro.html" id="registrarse">¿Ya tienes cuenta? Inicia Sesión</a><br><br>
+                <button type="submit" id="crearCuenta">Crear Cuenta</button><br><br>
+
+                <p id="mensajeRegistro"></p>
             </div>
         </form>
+        <button type="button" id="iniciarSesion">¿Ya tienes cuenta? Inicia Sesión</button><br><br>
+
     </div>
 
-    <div id="usuario">
-        <form id="register">
-            <div id="formulario">
-                <h1>Bienvenido, usuario</h1>
-                <button type="submit">Cambiar Tema</button> <button type="submit">Cerrar Sesión</button><br><br>
-            </div>
-        </form>
+
+    <div id="panel" class="scene">
+
+        <div class="formulario">
+            <h1>Bienvenido, <span id="nombreUsuario"></span></h1>
+            <button type="button" id="botonTema">Cambiar Tema</button>
+            <button type="button" id="cerrarSesion">Cerrar Sesión</button>
+        </div>
+
     </div>
-    
+
+    <script type="module" src="./login.js"></script>
+    <script type="module" src="./registro.js"></script>
+    <script type="module" src="./usuario.js"></script>
+
 </body>
 
 </html>
