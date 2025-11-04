@@ -27,6 +27,71 @@ body {
     color: red;
 }
 
-#mensajeRegistro{
+#mensajeRegistro {
     color: green;
+}
+
+.campo small {
+    color: red;
+    font-size: 0.9em;
+    display: block;
+    margin-top: 4px;
+}
+
+input.success {
+    border: 2px solid green;
+}
+
+input.error {
+    border: 2px solid red;
+}
+
+#cookieBanner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.95em;
+    z-index: 1000;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#cookieBanner button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cookieBanner button:hover {
+    background-color: #45a049;
+}
+
+#cookieBanner.hidden {
+    display: none;
+}
+
+.input_toggle {
+    position: relative;
+    display: inline-block;
+}
+
+.input_toggle .toggle_password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    font-size: 1.1em;
+    padding: 0;
 }

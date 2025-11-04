@@ -21,28 +21,57 @@ export function generateSalt() {
 }
 
 export function showScene(id) {
-    document.querySelectorAll('.scene').forEach(
-        element => element.classList.remove('active')
-    );
-    document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.scene').forEach(
+    element => element.classList.remove('active')
+  );
+  document.getElementById(id).classList.add('active');
 }
 
 export function setCookie(nombre, valor, dias) {
   const fecha = new Date();
-  fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000));
-  document.cookie = `${nombre}=${valor}; expires=${fecha.toUTCString()}; path=/`;
+  fecha.setTime(fecha.getTime() + dias * 24 * 60 * 60 * 1000);
+  document.cookie = `${encodeURIComponent(nombre)}=${encodeURIComponent(valor)}; expires=${fecha.toUTCString()}; path=/`;
 }
 
 export function getCookie(nombre) {
-  const nombreEQ = nombre + "=";
+  const nombreCookie = encodeURIComponent(nombre) + "=";
   const cookies = document.cookie.split(";");
-  for (let c of cookies) {
-    c = c.trim();
-    if (c.startsWith(nombreEQ)) return c.substring(nombreEQ.length);
+
+  for (let cookie of cookies) {
+    cookie = cookie.trim();
+    if (cookie.startsWith(nombreCookie)) {
+      return decodeURIComponent(cookie.substring(nombreCookie.length));
+    }
   }
-  return null;
+  return "";
 }
 
 export function deleteCookie(nombre) {
-  document.cookie = `${nombre}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  document.cookie = `${encodeURIComponent(nombre)}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+}
+
+export function inicializarBannerCookies() {
+  const cookieBanner = document.getElementById("cookieBanner");
+  const aceptarBoton = document.getElementById("aceptar");
+
+  if (!cookieBanner || !aceptarBoton) return; // Evita errores si no existe el footer
+
+  // Si ya se aceptó, ocultamos el banner
+  if (getCookie("cookiesAccepted") === "true") {
+    cookieBanner.classList.add("hidden");
+  } else {
+    // Mostrar el banner
+    cookieBanner.classList.remove("hidden");
+
+    aceptarBoton.addEventListener("click", () => {
+      setCookie("cookiesAccepted", "true", 365); 
+      cookieBanner.classList.add("hidden");
+    });
+  }
+}
+
+export function mostrarPanel(usuario) {
+  showScene("panel");
+  const nombreUsuario = document.getElementById("nombreUsuario");
+  if (nombreUsuario) nombreUsuario.textContent = usuario;
 }

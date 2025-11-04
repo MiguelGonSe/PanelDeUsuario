@@ -6,26 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="Css.css">
+    <script type="module" src="./main.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <title>Panel de Usuario</title>
 </head>
 
 <body>
 
-    <div id="login" class="scene active">
+    <div id="login" class="scene">
 
         <form id="form_login">
             <div class="formulario">
 
                 <h1>Iniciar Sesión</h1><br>
                 <label for="usuarioLogin">Usuario:</label>
-                <input type="text" id="usuarioLogin" name="usuario" maxlength="20" placeholder="Usuario"
-                    required><br><br>
+                <input type="text" id="usuarioLogin" name="usuario" maxlength="20" placeholder="Usuario" required>
+                <br><br>
 
                 <label for="contraseniaLogin">Contraseña:</label>
-                <input type="password" id="contraseniaLogin" name="contrasenia" placeholder="Contraseña"
-                    required><br><br>
+                <div class="input_toggle">
+                    <input type="password" id="contraseniaLogin" name="contrasenia" placeholder="Contraseña" required>
+                    <button type="button" class="toggle_password"><i class="fa fa-eye"></i></button>
+                </div>
+                <br><br>
 
-                <button id="registrarse">Registrarse</button>
+                <button type="button" id="registrarse">Registrarse</button>
                 <button type="submit">Entrar</button><br>
                 <p id="errorLogin"></p>
             </div>
@@ -35,39 +40,53 @@
 
 
     <div id="registro" class="scene">
-
         <form id="form_registro">
             <div class="formulario">
-
                 <h1>Registro</h1><br>
-                <label for="usuarioRegistro">Usuario:</label>
-                <input type="text" id="usuarioRegistro" name="usuario" maxlength="20" placeholder="Usuario"
-                    required><br><br>
 
-                <label for="contraseniaRegistro">Contraseña:</label>
-                <input type="password" id="contraseniaRegistro" name="contrasenia" placeholder="Contraseña"
-                    required><br><br>
+                <div class="campo">
+                    <label for="usuarioRegistro">Usuario:</label>
+                    <input type="text" id="usuarioRegistro" name="usuario" maxlength="20" placeholder="Usuario"
+                        required><br>
+                    <small></small>
+                </div><br>
 
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required><br><br>
+                <div class="campo">
+                    <label for="contraseniaRegistro">Contraseña:</label>
+                    <input type="password" id="contraseniaRegistro" name="contrasenia" placeholder="Contraseña"
+                        required><br>
+                    <small></small>
+                </div><br>
 
-                <label for="cp">Código Postal:</label>
-                <input type="text" id="cp" name="cp" placeholder="Código Postal" required><br><br>
+                <div class="campo">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required><br>
+                    <small></small>
+                </div><br>
 
-                <input type="checkbox" id="mayorEdad" name="mayorEdad" value="sí">
-                <label for="mayorEdad">Soy mayor de edad</label><br><br>
-                <div id="edadContainer" style="display:none;">
+                <div class="campo">
+                    <label for="cp">Código Postal:</label>
+                    <input type="text" id="cp" name="cp" placeholder="Código Postal" required><br>
+                    <small></small>
+                </div><br>
+
+                <div class="campo">
+                    <input type="checkbox" id="mayorEdad" name="mayorEdad" value="sí">
+                    <label for="mayorEdad">Soy mayor de edad</label>
+                </div><br>
+
+                <div id="edadContainer" class="campo" style="display:none;">
                     <label for="edad">Edad:</label>
-                    <input type="number" id="edad" name="edad" placeholder="Edad" min="18" max="99"><br><br>
-                </div>
-
-                <button type="submit" id="crearCuenta">Crear Cuenta</button><br><br>
+                    <input type="number" id="edad" name="edad" placeholder="Edad" min="18" max="99"><br>
+                    <small></small>
+                </div><br>
 
                 <p id="mensajeRegistro"></p>
+                <button type="submit" id="crearCuenta">Crear Cuenta</button><br><br>
             </div>
         </form>
-        <button type="button" id="iniciarSesion">¿Ya tienes cuenta? Inicia Sesión</button><br><br>
 
+        <button type="button" id="iniciarSesion">¿Ya tienes cuenta? Inicia Sesión</button><br><br>
     </div>
 
 
@@ -80,11 +99,12 @@
         </div>
 
     </div>
-
-    <script type="module" src="./login.js"></script>
-    <script type="module" src="./registro.js"></script>
-    <script type="module" src="./usuario.js"></script>
-
 </body>
+<footer id="cookieBanner" class="hidden">
+    <p>
+        Usamos Cookies para recordar tus preferencias. ¿Aceptas?
+        <button id="aceptar">Aceptar</button>
+    </p>
+</footer>
 
 </html>
