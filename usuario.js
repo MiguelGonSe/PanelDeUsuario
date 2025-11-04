@@ -23,3 +23,11 @@ if (botonTema) {
         setCookie("tema", esOscuro ? "oscuro" : "claro", 1);
     });
 }
+
+const usuarioCookie = getCookie("usuario");
+if (usuarioCookie) {
+    const nombreUsuarioSpan = document.getElementById("nombreUsuario");
+    if (nombreUsuarioSpan) {
+        nombreUsuarioSpan.textContent = usuarioCookie;
+    }
+}

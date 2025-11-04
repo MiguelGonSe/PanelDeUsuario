@@ -1,4 +1,4 @@
-import { showScene, hashText, generateSalt } from "./Utils/utils.js";
+import { showScene, hashText, generateSalt, setCookie, getCookie } from "./Utils/utils.js";
 import { constants } from "./Utils/constant.js"
 
 const form = document.getElementById("form_registro");
@@ -148,7 +148,7 @@ form.addEventListener("submit", async (e) => {
     };
     localStorage.setItem(inputNameElement.value.trim(), JSON.stringify(usuario));
 
-    document.getElementById("nombreUsuario").textContent = inputNameElement.value.trim();
+    setCookie("usuario", inputNameElement.value.trim(), 1);
 
     mensajeRegistro.style.color = "green";
     mensajeRegistro.textContent = "¡Registro completado con éxito!";
@@ -156,7 +156,31 @@ form.addEventListener("submit", async (e) => {
     form.reset();
     edadContainer.style.display = "none";
 
-    showScene("panel");
-    document.getElementById("nombreUsuario").textContent = inputNameElement.value.trim();
+    mostrarPanelUsuario(inputNameElement.value.trim());
 });
 
+function mostrarPanelUsuario() {
+    showScene("panel");
+    setTimeout(() => {
+        const nombreUsuarioSpan = document.getElementById("nombreUsuario");
+        const usuarioCookie = getCookie("usuario");
+        if (nombreUsuarioSpan && usuarioCookie) {
+            nombreUsuarioSpan.textContent = usuarioCookie;
+        }
+    }, 0);
+}
+
+const toggleRegistro = document.querySelector(".toggle_password");
+const passwordRegistro = document.getElementById("contraseniaRegistro");
+
+toggleRegistro.addEventListener("click", () => {
+    const isPassword = passwordRegistro.type === "password";
+    passwordRegistro.type = isPassword ? "text" : "password";
+    toggleRegistro.innerHTML = `<i class="fa ${isPassword ? 'fa-eye-slash' : 'fa-eye'}"></i>`;
+});
+
+const iniciarSesionBoton = document.getElementById("iniciarSesion");
+
+iniciarSesionBoton.addEventListener("click", () => {
+    showScene("login");
+});

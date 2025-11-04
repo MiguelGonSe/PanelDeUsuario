@@ -9,7 +9,7 @@ const passwordInput = document.getElementById("contraseniaLogin");
 
 const usuarioCookie = getCookie("usuario");
 if (usuarioCookie) {
-    mostrarPanel(usuarioCookie);
+    mostrarPanelUsuario(usuarioCookie);
 }
 
 registrarseBoton.addEventListener("click", () => {
@@ -33,15 +33,23 @@ formLogin.addEventListener("submit", async (e) => {
     const hashedInput = await hashText(contrasenia + datosGuardados.salt);
 
     if (hashedInput === datosGuardados.contrasenia) {
-        setCookie("usuario", usuario, 1); 
-        mostrarPanel(usuario);
+        setCookie("usuario", usuario, 1);
+        mostrarPanelUsuario(usuario);
     } else {
         errorLogin.textContent = "Usuario o contraseña incorrectos.";
     }
 });
 
 toggleBoton.addEventListener("click", () => {
-  const isPassword = passwordInput.type === "password";
-  passwordInput.type = isPassword ? "text" : "password";
-  toggleBoton.innerHTML = `<i class="fa ${isPassword ? 'fa-eye-slash' : 'fa-eye'}"></i>`;
+    const isPassword = passwordInput.type === "password";
+    passwordInput.type = isPassword ? "text" : "password";
+    toggleBoton.innerHTML = `<i class="fa ${isPassword ? 'fa-eye-slash' : 'fa-eye'}"></i>`;
 });
+
+function mostrarPanelUsuario(nombre) {
+    showScene("panel");
+    const nombreUsuarioSpan = document.getElementById("nombreUsuario");
+    if (nombreUsuarioSpan) {
+        nombreUsuarioSpan.textContent = nombre;
+    }
+}

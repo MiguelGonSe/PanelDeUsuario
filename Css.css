@@ -1,9 +1,50 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #74b9ff, #a29bfe);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+}
+
 .scene {
     display: none;
 }
 
 .scene.active {
     display: block;
+}
+
+.formulario {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    text-align: center;
+}
+
+.formulario h1 {
+    margin-bottom: 15px;
+    color: #2d3436;
+}
+
+button {
+    background-color: #0984e3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #74b9ff;
 }
 
 #login,
@@ -17,9 +58,50 @@ body.modoscuro {
     color: white;
 }
 
-body {
-    background-color: white;
-    color: black;
+body.modoscuro h1 {
+    color: white;
+}
+
+body.modoscuro {
+    background: #121212;
+    color: white;
+}
+
+body.modoscuro .formulario {
+    background-color: #333;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.modoscuro input {
+    background-color: #555;
+    color: white;
+    border: 1px solid #777;
+}
+
+body.modoscuro input.success {
+    border: 2px solid #00ff00;
+}
+
+body.modoscuro input.error {
+    border: 2px solid #ff5555;
+}
+
+body.modoscuro button {
+    background-color: #00cec9;
+    color: white;
+}
+
+body.modoscuro button:hover {
+    background-color: #81ecec;
+}
+
+body.modoscuro .campo small {
+    color: #ff7675;
+}
+
+body.modoscuro .toggle_password {
+    color: #ddd;
 }
 
 #errorLogin,
@@ -86,7 +168,7 @@ input.error {
 .input_toggle .toggle_password {
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: 30%;
     transform: translateY(-50%);
     background: none;
     border: none;
